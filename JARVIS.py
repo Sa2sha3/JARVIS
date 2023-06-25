@@ -12,4 +12,9 @@ def talk(words):
     engine.say(words)
     engine.runAndWait()
 
-talk("Привіт, чим можу допомогти?")
+talk("Hello")
+
+def command():
+    r = sr.Recognizer()
+
+command()
