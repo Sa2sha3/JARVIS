@@ -1,4 +1,5 @@
 import os
+import sys
 import webbrowser
 
 import speech_recognition as sr
@@ -27,8 +28,13 @@ def command():
         r.adjust_for_ambient_noise(source, duration=1)
         audio = r.listen(source)
 
-    task = r.recognize_google(audio, language="en-US").lower()
-    print("You: " + task)
+    try:
+        task = r.recognize_google(audio, language="en-US").lower()
+        print("You: " + task)
+    except:
+        talk("I dont understand you")
+        task = command()
+
 
     return task
 
@@ -38,6 +44,12 @@ def make_something(ar_task):
         url = "https://ituniver.com"
         webbrowser.open(url)
 
+    elif "Stop" in ar_task:
+        talk("Good bye")
+        sys.exit()
+
+    elif "name" in ar_task:
+        talk("My name is JARVIS")
 
 make_something(command())
 
