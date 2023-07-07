@@ -3,4 +3,7 @@ pyttsx3
 
 SpeechRecognition
 gTTs
+
+
 openai
+pytho-dotenv
